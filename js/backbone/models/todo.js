@@ -1,6 +1,6 @@
 var app = app || {};
 
-(function () {
+(function() {
   'use strict';
 
   app.Todo = Backbone.Model.extend({
@@ -9,10 +9,8 @@ var app = app || {};
       completed: false
     },
 
-    toggle: function () {
-      this.save({
-        completed: !this.get('completed')
-        });
-      }
-    });
+    toggle: function() {
+      this.save({ completed: !this.get('completed') });
+    }
+  });
 })();

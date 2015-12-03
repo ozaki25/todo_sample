@@ -1,6 +1,6 @@
 var app = app || {};
 
-(function ($) {
+(function($) {
   'use strict';
 
   app.TodoView = Backbone.View.extend({
@@ -17,16 +17,14 @@ var app = app || {};
       'blur .edit': 'close'
     },
 
-    initialize: function () {
+    initialize: function() {
       this.listenTo(this.model, 'change', this.render);
       this.listenTo(this.model, 'destroy', this.remove);
       this.listenTo(this.model, 'visible', this.toggleVisible);
     },
 
-    render: function () {
-      if (this.model.changed.id !== undefined) {
-        return;
-      }
+    render: function() {
+      if(this.model.changed.id !== undefined)  return;
 
       this.$el.html(this.template(this.model.toJSON()));
       this.$el.toggleClass('completed', this.model.get('completed'));
@@ -35,50 +33,43 @@ var app = app || {};
       return this;
     },
 
-    toggleVisible: function () {
+    toggleVisible: function() {
       this.$el.toggleClass('hidden', this.isHidden());
     },
 
-    isHidden: function () {
-      return this.model.get('completed') ?
-	app.TodoFilter === 'active' :
-	app.TodoFilter === 'completed';
+    isHidden: function() {
+      return this.model.get('completed') ? app.TodoFilter === 'active' : app.TodoFilter === 'completed';
     },
 
-    toggleCompleted: function () {
+    toggleCompleted: function() {
       this.model.toggle();
     },
 
-    edit: function () {
+    edit: function() {
       this.$el.addClass('editing');
       this.$input.focus();
     },
 
-    close: function () {
+    close: function() {
       var value = this.$input.val();
       var trimmedValue = value.trim();
 
-      if (!this.$el.hasClass('editing')) {
-        return;
-      }
+      if(!this.$el.hasClass('editing')) return;
 
-      if (trimmedValue) {
+      if(trimmedValue) {
         this.model.save({ title: trimmedValue });
       } else {
         this.clear();
       }
-
       this.$el.removeClass('editing');
     },
 
-    updateOnEnter: function (e) {
-      if (e.which === ENTER_KEY) {
-        this.close();
-      }
+    updateOnEnter: function(e) {
+      if(e.which === ENTER_KEY) this.close();
     },
 
     revertOnEscape: function (e) {
-      if (e.which === ESC_KEY) {
+      if(e.which === ESC_KEY) {
         this.$el.removeClass('editing');
         this.$input.val(this.model.get('title'));
       }

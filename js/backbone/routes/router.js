@@ -1,6 +1,6 @@
 var app = app || {};
 
-(function () {
+(function() {
   'use strict';
 
   var TodoRouter = Backbone.Router.extend({
@@ -8,7 +8,7 @@ var app = app || {};
       '*filter': 'setFilter'
     },
 
-    setFilter: function (param) {
+    setFilter: function(param) {
       app.TodoFilter = param || '';
       app.todos.trigger('filter');
     }
