@@ -10,10 +10,9 @@ var app = app || {};
 
     events: {
       'click .toggle': 'toggleCompleted',
-      'dblclick label': 'edit',
+      'dblclick .todo-title': 'edit',
       'click .destroy': 'clear',
       'keypress .edit': 'updateOnEnter',
-      'keydown .edit': 'revertOnEscape',
       'blur .edit': 'close'
     },
 
@@ -46,7 +45,8 @@ var app = app || {};
     },
 
     edit: function() {
-      this.$el.addClass('editing');
+      this.$('.view').addClass('hidden');
+      this.$input.removeClass('hidden');
       this.$input.focus();
     },
 
@@ -54,25 +54,17 @@ var app = app || {};
       var value = this.$input.val();
       var trimmedValue = value.trim();
 
-      if(!this.$el.hasClass('editing')) return;
-
       if(trimmedValue) {
         this.model.save({ title: trimmedValue });
       } else {
         this.clear();
       }
-      this.$el.removeClass('editing');
+      this.$('.view').removeClass('hidden');
+      this.$input.addClass('hidden');
     },
 
     updateOnEnter: function(e) {
       if(e.which === ENTER_KEY) this.close();
-    },
-
-    revertOnEscape: function (e) {
-      if(e.which === ESC_KEY) {
-        this.$el.removeClass('editing');
-        this.$input.val(this.model.get('title'));
-      }
     },
 
     clear: function () {
