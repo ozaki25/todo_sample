@@ -1,8 +1,5 @@
-var app = app || {};
-var ENTER_KEY = 13;
-var ESC_KEY = 27;
-
+/// <reference path="../../../typings/tsd.d.ts" />
+ENTER_KEY: number = 13;
 $(function () {
-  'use strict';
-  new app.AppView();
+    new AppView();
 });
