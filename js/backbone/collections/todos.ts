@@ -12,3 +12,5 @@ export class TodoList<Todo> extends Backbone.Collection<Backbone.Model> {
         return this.length ? this.last().get('order') + 1 : 1;
     }
 }
+
+var Todos = new Todos();
