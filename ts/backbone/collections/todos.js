@@ -4,17 +4,16 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-define(["require", "exports", 'backbone'], function (require, exports, Backbone) {
-    var Todos = (function (_super) {
-        __extends(Todos, _super);
-        function Todos() {
-            _super.apply(this, arguments);
-            this.localStorage = new Store('todos-backbone');
-        }
-        Todos.prototype.nextOrder = function () {
-            return this.length ? this.last().get('order') + 1 : 1;
-        };
-        return Todos;
-    })(Backbone.Collection);
-    exports.Todos = Todos;
-});
+var Backbone = require('backbone');
+var app = app || {};
+var Todos = (function (_super) {
+    __extends(Todos, _super);
+    function Todos() {
+        _super.apply(this, arguments);
+        this.localStorage = new Store('todos-backbone');
+    }
+    Todos.prototype.nextOrder = function () {
+        return this.length ? this.last().get('order') + 1 : 1;
+    };
+    return Todos;
+})(Backbone.Collection);

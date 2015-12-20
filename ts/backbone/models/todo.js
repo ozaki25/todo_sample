@@ -4,19 +4,18 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-define(["require", "exports", 'backbone'], function (require, exports, Backbone) {
-    var Todo = (function (_super) {
-        __extends(Todo, _super);
-        function Todo() {
-            _super.apply(this, arguments);
-        }
-        Todo.prototype.defaults = function () {
-            return {
-                title: '',
-                completed: false
-            };
+var Backbone = require('backbone');
+var app = app || {};
+var Todo = (function (_super) {
+    __extends(Todo, _super);
+    function Todo() {
+        _super.apply(this, arguments);
+    }
+    Todo.prototype.defaults = function () {
+        return {
+            title: '',
+            completed: false
         };
-        return Todo;
-    })(Backbone.Model);
-    exports.Todo = Todo;
-});
+    };
+    return Todo;
+})(Backbone.Model);

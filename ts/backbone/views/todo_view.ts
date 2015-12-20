@@ -1,9 +1,4 @@
-/// <reference path="../../../typings/tsd.d.ts" />
-
-import Backbone = require('backbone');
-import app = require('../../app');
-
-export class TodoView extends Backbone.View<Backbone.Model> {
+class TodoView extends Backbone.View<Backbone.Model> {
     template: (data: any) => string;
     $input: any;
 
@@ -22,6 +17,7 @@ export class TodoView extends Backbone.View<Backbone.Model> {
     }
 
     events(): Backbone.EventsHash {
+        console.log("events()");
         return {
             'click .todo-title': 'edit',
             'click .destroy': 'clear',
@@ -31,29 +27,35 @@ export class TodoView extends Backbone.View<Backbone.Model> {
     }
 
     render() {
+        console.log("render()");
         this.$el.html(this.template(this.model.toJSON()));
         this.$input = this.$('.edit');
         return this;
     }
 
     edit() {
+        console.log("edit()");
         this.$('.todo').addClass('hidden');
         this.$input.removeClass('hidden');
         this.$input.focus();
     }
 
     close() {
+        console.log("close()");
         var trimmedValue = this.$input.val().trim();
         trimmedValue ? this.model.save({ title: trimmedValue }) : this.clear();
+        
         this.$('.todo').removeClass('hidden');
         this.$input.addClass('hidden');
     }
 
     updateOnEnter(e) {
+        console.log("updateOnEnter(e)");
         if(e.which === TodoView.ENTER_KEY) this.close();
     }
 
     clear() {
-        this.model.clear();
+        console.log("clear()");
+        this.model.destroy();
     }
 }

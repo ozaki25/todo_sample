@@ -1,8 +1,8 @@
 /// <reference path="../typings/tsd.d.ts" />
 
-import app_view = require('./backbone/views/app_view');
+declare var Store: any;
 
 $(() => {
-    new app_view.AppView();
+    new AppView();
 
 });
