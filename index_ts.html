@@ -2,20 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>TODO-Sample</title>
+    <title>TODO-Sample-TS</title>
     <link rel="stylesheet" href="./css/todo.css">
     <link rel="stylesheet" href="./css/libs/bootstrap.css">
-    <script src="./js/libs/jquery-1.11.3.js"></script>
-    <script src="./js/libs/bootstrap.js"></script>    
-    <script src="./js/libs/underscore.js"></script>
-    <script src="./js/libs/backbone.js"></script>
-    <script src="./js/libs/backbone.localStorage.js"></script>
+    <script src="./ts/libs/jquery-1.11.3.js"></script>
+    <script src="./ts/libs/bootstrap.js"></script>    
+    <script src="./ts/libs/underscore.js"></script>
+    <script src="./ts/libs/backbone.js"></script>
+    <script src="./ts/libs/backbone.localStorage.js"></script>
   </head>
   <body>
     <div class="container todoapp">
       <div class="row">
 	       <div class="col-md-4 col-md-offset-4">
-          <h1>TODO-Sample</h1>
+          <h1>TODO-Sample-TS</h1>
 	         <h3>New Todo</h3>
           <input class="new-todo form-control" autofocus>
 	         <h3>Listing Todos</h3>
@@ -27,7 +27,7 @@
     <script type="text/template" id="item-template">
       <div class="todo">
 	       <span class="todo-title"><%- title %></span>
-	       <button class="btn btn-link btn-xs destroy">削除</button>
+	       <button class="btn btn-link btn-xs destroy">delete</button>
       </div>
       <input class="edit form-control hidden" value="<%- title %>">
     </script>
