@@ -13,9 +13,11 @@ module.exports = function (grunt) {
     uglify: {
       dist: {
         files: {
-          './js/backbone/views/app_view.min.ts': './js/backbone/views/app_view.ts'
+          './js/backbone/collections/todos.min.ts': './js/backbone/collections/todos.ts'
         }
       }
+    },
+    browserify : {
     }
   });
 
