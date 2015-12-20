@@ -1,11 +1,10 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 
+import Backbone = require('backbone');
+
 declare var Store: any;
 
-import Backbone = require('backbone');
-import Todo = require('../models/todo');
-
-export class TodoList<Todo> extends Backbone.Collection<Backbone.Model> {
+export class Todos<Todo> extends Backbone.Collection<Backbone.Model> {
     localStorage = new Store('todos-backbone');
 
     nextOrder() {
@@ -13,4 +12,3 @@ export class TodoList<Todo> extends Backbone.Collection<Backbone.Model> {
     }
 }
 
-var Todos = new Todos();
