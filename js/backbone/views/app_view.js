@@ -11,8 +11,8 @@ var app = app || {};
     },
 
     initialize: function() {
-      this.$input = this.$('.new-todo');
-      this.$list = this.$('.todo-list');
+      this.$input = $('.new-todo');
+      this.$list = $('.todo-list');
 
       this.listenTo(app.todos, 'add', this.addOne);
       this.listenTo(app.todos, 'reset', this.addAll);
@@ -31,7 +31,7 @@ var app = app || {};
 
     addAll: function() {
       this.$list.html('');
-      if(app.todos.length != 0) app.todos.each(this.addOne, this);
+      app.todos.each(this.addOne, this);
     },
 
     newAttributes: function() {
