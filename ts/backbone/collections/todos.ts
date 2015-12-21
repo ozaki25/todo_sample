@@ -1,3 +1,5 @@
+declare var Store: any;
+
 class Todos<Todo> extends Backbone.Collection<Backbone.Model> {
     localStorage = new Store('todos-backbone');
 
