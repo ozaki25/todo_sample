@@ -21,8 +21,13 @@ module.exports = function (grunt) {
           sourceMap: true,
           sourceMapIn: './ts/todo_sample.js.map'
         }
-      },
-      browserify : {
+      }
+    },
+    coffee: {
+      compile: {
+        files: {
+          './coffee/todo_sample.js': ['./coffee/*.coffee', './coffee/*/*/*.coffee']
+        }
       }
     }
   });
