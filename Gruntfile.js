@@ -3,9 +3,12 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     typescript: {
-      ts: {
-        files: {
-          //'./ts/todo_sample.js': ['./ts/backbone/*/*.ts', './ts/*/ts']
+      base: {
+        src: ['./ts/*.app', './ts/*/*/*.ts'],
+        dest: './ts/todo_sample.js',
+        options: {
+          target: 'es5',
+          sourceMap: true
         }
       }
     },
@@ -13,10 +16,14 @@ module.exports = function (grunt) {
       dist: {
         files: {
           './ts/todo_sample.min.js': './ts/todo_sample.js'
+        },
+        options: {
+          sourceMap: true,
+          sourceMapIn: './ts/todo_sample.js.map'
         }
+      },
+      browserify : {
       }
-    },
-    browserify : {
     }
   });
 
@@ -24,5 +31,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-browserify');
   
-  grunt.registerTask('default', ['typescript', 'uglify']);
+  grunt.registerTask('default', ['uglify']);
 };
