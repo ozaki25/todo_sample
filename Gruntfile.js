@@ -1,19 +1,18 @@
 module.exports = function (grunt) {
-  // package.jsonを読み込み、pkg変数にキャッシュ
   var pkg = grunt.file.readJSON('package.json');
 
   grunt.initConfig({
     typescript: {
       ts: {
         files: {
-          './js/backbone/*/*.js': './js/backbone/*/*.ts'
+          //'./ts/todo_sample.js': ['./ts/backbone/*/*.ts', './ts/*/ts']
         }
       }
     },
     uglify: {
       dist: {
         files: {
-          './js/backbone/collections/todos.min.ts': './js/backbone/collections/todos.ts'
+          './ts/todo_sample.min.js': './ts/todo_sample.js'
         }
       }
     },
@@ -25,5 +24,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-browserify');
   
-  grunt.registerTask('default', ['uglify', 'typescript']);
+  grunt.registerTask('default', ['typescript', 'uglify']);
 };
