@@ -30,6 +30,15 @@ module.exports = function (grunt) {
         }
       }
     },
+    concat: {
+      options: {
+        sourceMap: true
+      },
+      dist: {
+        src: ['./js/app.js', './js/backbone/*/*.js'],
+        dest: './js/todo_sample.js'
+      }
+    },
     uglify: {
       dist: {
         files: {
@@ -48,6 +57,15 @@ module.exports = function (grunt) {
           sourceMap: true,
           sourceMapIn: './coffee/todo_sample.js.map'
         }
+      },
+      dist: {
+        files: {
+          './js/todo_sample.min.js': './js/todo_sample.js'
+        },
+        options: {
+          sourceMap: true,
+          sourceMapIn: './js/todo_sample.js.map'
+        }
       }
     }
   });
@@ -57,6 +75,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-coffeescript-concat');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   
-  grunt.registerTask('default', ['typescript', 'coffeescript_concat', 'coffee', 'uglify']);
+  grunt.registerTask('default', ['typescript', 'coffeescript_concat', 'coffee', 'concat', 'uglify']);
 };
