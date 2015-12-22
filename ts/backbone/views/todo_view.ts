@@ -4,7 +4,7 @@ class TodoView extends Backbone.View<Backbone.Model> {
 
     static ENTER_KEY:number = 13;
 
-    constructor(options?) {
+    constructor(options?:any) {
         this.tagName = 'li';
         this.className = 'list-group-item'
 
@@ -49,7 +49,7 @@ class TodoView extends Backbone.View<Backbone.Model> {
         this.$input.addClass('hidden');
     }
 
-    updateOnEnter(e) {
+    updateOnEnter(e:any) {
         console.log("updateOnEnter(e)");
         if(e.which === TodoView.ENTER_KEY) this.close();
     }

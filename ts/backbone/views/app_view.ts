@@ -32,7 +32,7 @@ class AppView extends Backbone.View<Backbone.Model> {
         return this;
     }
 
-    addOne(todo) {
+    addOne(todo:Backbone.Model) {
         console.log("addOne(todo)");
         var view = new TodoView({ model: todo });
         this.$list.append(view.render().el);
@@ -53,7 +53,7 @@ class AppView extends Backbone.View<Backbone.Model> {
         };
     }
 
-    createOnEnter(e) {
+    createOnEnter(e:any) {
         console.log("createOnEnter(e)");
         if(e.which === TodoView.ENTER_KEY && this.$input.val().trim()) {
             TodoList.create(this.newAttributes());

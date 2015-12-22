@@ -8,7 +8,8 @@ module.exports = function (grunt) {
         dest: './ts/todo_sample.js',
         options: {
           target: 'es5',
-          sourceMap: true
+          sourceMap: true,
+          noImplicitAny:true
         }
       }
     },
