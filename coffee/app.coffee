@@ -1,5 +1,3 @@
-app = app || {};
-ENTER_KEY = 13;
+ENTER_KEY = 13
 
-$ ->
-  new app.AppView()
+new AppView()

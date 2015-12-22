@@ -4,11 +4,28 @@ module.exports = function (grunt) {
   grunt.initConfig({
     typescript: {
       base: {
-        src: ['./ts/*.app', './ts/*/*/*.ts'],
+        src: ['./ts/app.ts', './ts/backbone/*/*.ts'],
         dest: './ts/todo_sample.js',
         options: {
           target: 'es5',
           sourceMap: true
+        }
+      }
+    },
+    coffee: {
+      compileWithMaps: {
+        options: {
+          sourceMap: true
+        },
+        files: {
+          './coffee/todo_sample.js': './coffee/todo_sample.coffee'
+        }
+      }
+    },
+    coffeescript_concat: {
+      compile: {
+        files: {
+          './coffee/todo_sample.coffee': ['./coffee/app.coffee', './coffee/backbone/*/*.coffee']
         }
       }
     },
@@ -21,12 +38,14 @@ module.exports = function (grunt) {
           sourceMap: true,
           sourceMapIn: './ts/todo_sample.js.map'
         }
-      }
-    },
-    coffee: {
-      compile: {
+      },
+      dist: {
         files: {
-          './coffee/todo_sample.js': ['./coffee/*.coffee', './coffee/*/*/*.coffee']
+          './coffee/todo_sample.min.js': './coffee/todo_sample.js'
+        },
+        options: {
+          sourceMap: true,
+          sourceMapIn: './coffee/todo_sample.js.map'
         }
       }
     }
@@ -36,6 +55,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-coffee');
+  grunt.loadNpmTasks('grunt-coffeescript-concat');
   
-  grunt.registerTask('default', ['uglify']);
+  grunt.registerTask('default', ['typescript', 'coffeescript_concat', 'coffee', 'uglify']);
 };

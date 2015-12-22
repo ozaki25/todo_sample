@@ -1,3 +1,7 @@
+/// <reference path="../typings/tsd.d.ts" />
+$(function () {
+    new AppView();
+});
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -130,7 +134,4 @@ var TodoView = (function (_super) {
     TodoView.ENTER_KEY = 13;
     return TodoView;
 })(Backbone.View);
-/// <reference path="../typings/tsd.d.ts" />
-$(function () {
-    new AppView();
-});
+//# sourceMappingURL=todo_sample.js.map

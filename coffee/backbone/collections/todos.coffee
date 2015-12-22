@@ -1,14 +1,12 @@
-app = app || {};
+class Todos extends Backbone.Collection 
+  model: Todo
 
-$ ->
-  Todos = Backbone.Collection.extend
-    model: app.Todo
+  localStorage: new Backbone.LocalStorage 'todos-backbone'
 
-    localStorage: new Backbone.LocalStorage('todos-backbone')
+  nextOrder: ->
+    console.log 'Todos.nextOrder'
+    if this.length then this.last().get 'order' + 1 else 1
 
-    nextOrder: ->
-      this.length ? this.last().get('order') + 1 : 1
+  comparator: 'order'
 
-    comparator: 'order'
-
-  app.todos = new Todos()
+todos = new Todos()
